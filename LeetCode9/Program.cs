@@ -10,8 +10,21 @@ namespace LeetCode9
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(123);
+            string inputNumber = Console.ReadLine();
+
+            Console.WriteLine(isPalindrom(inputNumber));
             Console.ReadLine();
+        }
+
+        static bool isPalindrom(string textNumber)
+        {
+            string temporaryText = "";
+            for (int i = textNumber.Length - 1; i >= 0; i--)
+            {
+                temporaryText += textNumber[i];
+            }
+
+            return (temporaryText == textNumber) ? true : false;
         }
     }
 }
