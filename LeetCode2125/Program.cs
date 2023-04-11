@@ -10,7 +10,7 @@ namespace LeetCode2125
     {
         static void Main(string[] args)
         {
-            string[] datas = new string[] { "000", "111", "000" };
+            string[] datas = new string[] { "011001", "000000", "010100", "001000" };
 
             Console.WriteLine(NumberOfBeams(datas));
 
@@ -22,34 +22,20 @@ namespace LeetCode2125
             int count = 0;
             List<int> tmp = new List<int>();
 
-            if(bank.Length > 0)
+            if (bank.Length != 0)
             {
-                for (int i = 0; i < bank.Length; i++)
-                {
-                    int onesCounter = 0;
+                tmp.Add(bank[0].ToCharArray().Count(c => c == '1'));
 
-                    for (int j = 0; j < bank[i].Length; j++)
-                    {
-                        if (bank[i][j] == '1')
-                        {
-                            onesCounter++;
-                        }
-                    }
+                for (int i = 1; i < bank.Length; i++)
+                {
+                    int onesCounter = bank[i].ToCharArray().Count(c => c == '1');
 
                     if(onesCounter != 0)
                     {
                         tmp.Add(onesCounter);
+                        count += tmp[tmp.Count - 1] * tmp[tmp.Count - 2];
                     }
                 }
-
-                for (int i = 1; i < tmp.Count; i++)
-                {
-                    count += tmp[i] * tmp[i - 1];
-                }
-            }
-            else
-            {
-                return 0;
             }
 
             return count;
